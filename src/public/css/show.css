@@ -1,0 +1,246 @@
+/* ===========================
+   購入画面 全体レイアウト
+=========================== */
+.purchase-container {
+    display: flex;
+    max-width: 1100px;
+    margin: 40px auto;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+/* 左側：商品画像 */
+.purchase-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 右側：商品情報 */
+.purchase-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.brand-name {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.tax {
+    font-size: 0.9rem;
+    color: #777;
+    margin-left: 5px;
+}
+
+/* いいね・コメント */
+.product-actions {
+    display: flex;
+    gap: 15px;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #444;
+}
+
+.favorite,
+.comments {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* 購入ボタン */
+.purchase-button {
+    background-color: #f15b5b;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.purchase-button:hover {
+    background-color: #d84f4f;
+}
+
+/* 商品説明 */
+.product-description h2,
+.product-info h2,
+.comments-section h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.product-description p {
+    margin: 3px 0;
+}
+
+/* 商品の情報 */
+.category-tag {
+    display: inline-block;
+    background: #e5e5e5;
+    border-radius: 20px;
+    padding: 3px 12px;
+    margin-right: 6px;
+    font-size: 0.85rem;
+}
+
+/* コメント一覧 */
+.comment {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.comment-text {
+    margin: 5px 0 0 0;
+}
+
+/* コメントフォーム */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.comment-button {
+    background-color: #f15b5b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s ease;
+}
+
+.comment-button:hover {
+    background-color: #d84f4f;
+}
+
+.error-messages p {
+    color: red;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .purchase-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product-image {
+        max-width: 100%;
+    }
+}
+
+
+/* スマホ */
+@media (max-width: 479px) {
+    .login-form {
+        padding: 24px 18px;
+        border-radius: 12px;
+    }
+
+    .login-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* タブレット */
+@media (min-width: 480px) and (max-width: 1023px) {
+    .login-form {
+        max-width: 440px;
+        padding: 28px;
+    }
+}
+
+/* PC（1024px〜1399px） */
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .login-form {
+        max-width: 460px;
+        padding: 32px;
+    }
+}
+
+/* 要件：PC（1400〜1540px）で崩れないように固定幅調整 */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .login-container {
+        padding: 40px;
+    }
+
+    .login-form {
+        max-width: 480px;
+        padding: 36px;
+    }
+}
+
+/* 超ワイドモニター（1541px〜） */
+@media (min-width: 1541px) {
+    .login-form {
+        max-width: 500px;
+    } }

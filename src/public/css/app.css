@@ -1,0 +1,130 @@
+/* ===============================
+   全体設定
+=============================== */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+/* ===============================
+   ヘッダー
+=============================== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 40px;
+}
+
+/* ロゴ */
+.logo img {
+    height: 40px;
+    vertical-align: middle;
+}
+
+/* ===============================
+   検索バー
+=============================== */
+.search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 400px;
+    max-width: 600px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+}
+
+/* ===============================
+   ナビゲーションリンク
+=============================== */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* 通常リンク（ログアウト・マイページ・ログイン・会員登録） */
+.header .nav-links a,
+.header .nav-links form button.logout-button {
+    color: #fff !important;
+    background: none !important;
+    border: none !important;
+    text-decoration: none !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    cursor: pointer;
+    transition: opacity 0.2s ease !important;
+    padding: 6px 10px !important;
+}
+
+/* hover時に少し暗く */
+.header .nav-links a:hover,
+.header .nav-links form button.logout-button:hover {
+    opacity: 0.8 !important;
+}
+
+/* 出品ボタン（白背景＋黒文字） */
+.header .nav-links .sell-button {
+    color: #000 !important;
+    background-color: #fff !important;
+    padding: 8px 18px !important;
+    border-radius: 6px !important;
+    border: 1px solid #fff !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.header .nav-links .sell-button:hover {
+    background-color: #f5f5f5 !important;
+}
+
+/* ===============================
+   メインコンテンツ
+=============================== */
+.main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===============================
+   フッター
+=============================== */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ===============================
+   レスポンシブ対応
+=============================== */
+@media (max-width: 479px) {
+    .header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+}

@@ -1,0 +1,144 @@
+.items-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.tab-menu {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tab {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 8px;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+.tab:hover {
+    color: #f66;
+}
+
+.tab.active {
+    color: #f66;
+    border-bottom: 2px solid #f66;
+}
+
+.item-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.item-card {
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.item-card:hover {
+    transform: scale(1.03);
+}
+
+.item-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-image {
+    font-size: 16px;
+    color: #333;
+}
+
+.item-name {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.no-items {
+    text-align: center;
+    margin-top: 50px;
+    color: #666;
+    font-size: 16px;
+}
+
+.item-card {
+    position: relative;
+}
+
+.sold-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 0, 0, 0.85);
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+/* スマホ */
+@media (max-width: 479px) {
+    .login-form {
+        padding: 24px 18px;
+        border-radius: 12px;
+    }
+
+    .login-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* タブレット */
+@media (min-width: 480px) and (max-width: 1023px) {
+    .login-form {
+        max-width: 440px;
+        padding: 28px;
+    }
+}
+
+/* PC（1024px〜1399px） */
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .login-form {
+        max-width: 460px;
+        padding: 32px;
+    }
+}
+
+/* 要件：PC（1400〜1540px）で崩れないように固定幅調整 */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .login-container {
+        padding: 40px;
+    }
+
+    .login-form {
+        max-width: 480px;
+        padding: 36px;
+    }
+}
+
+/* 超ワイドモニター（1541px〜） */
+@media (min-width: 1541px) {
+    .login-form {
+        max-width: 500px;
+    } }

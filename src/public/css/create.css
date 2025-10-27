@@ -1,0 +1,204 @@
+
+
+/* ===== 全体レイアウト ===== */
+.create-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.create-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* ===== フォーム ===== */
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* ← 中身を左寄せ */
+    gap: 10px;
+    width: 100%;
+}
+
+/* ===== 入力欄 ===== */
+label {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 15px;
+    width: 100%;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #ff6b6b;
+    outline: none;
+}
+
+/* ===== 商品画像アップロード ===== */
+.image-input {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.image-input:hover {
+    border-color: #ff6b6b;
+    background-color: #fff0f0;
+}
+
+/* ===== カテゴリー（タグ風） ===== */
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff6b6b;
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: white;
+    color: #ff6b6b;
+    font-size: 13px;
+}
+
+.category-item input {
+    display: none;
+}
+
+.category-item input:checked+span {
+    background-color: #ff6b6b;
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 14px;
+}
+
+/* ===== テキストエリア ===== */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ===== 出品ボタン ===== */
+.submit-btn {
+    display: block;
+    width: 100%;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #ff4c4c;
+}
+
+/* ===== エラーメッセージ ===== */
+.error-message {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* ===== 調整: 横並び崩し対策 ===== */
+.form-group select,
+.form-group input,
+.form-group textarea {
+    display: block;
+}
+
+.create-form>.form-group {
+    width: 100%;
+}
+
+/* スマホ */
+@media (max-width: 479px) {
+    .login-form {
+        padding: 24px 18px;
+        border-radius: 12px;
+    }
+
+    .login-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* タブレット */
+@media (min-width: 480px) and (max-width: 1023px) {
+    .login-form {
+        max-width: 440px;
+        padding: 28px;
+    }
+}
+
+/* PC（1024px〜1399px） */
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .login-form {
+        max-width: 460px;
+        padding: 32px;
+    }
+}
+
+/* 要件：PC（1400〜1540px）で崩れないように固定幅調整 */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .login-container {
+        padding: 40px;
+    }
+
+    .login-form {
+        max-width: 480px;
+        padding: 36px;
+    }
+}
+
+/* 超ワイドモニター（1541px〜） */
+@media (min-width: 1541px) {
+    .login-form {
+        max-width: 500px;
+    }
+}
+
+form,
+.form-group {
+    flex-direction: column !important;
+}
+

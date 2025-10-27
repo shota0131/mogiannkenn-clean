@@ -23,12 +23,12 @@ class FavoriteTest extends TestCase
 
         $this->actingAs($user);
 
-        // Act（いいねリクエスト送信）
+        
         $response = $this->get("/item/{$item->id}?favorite=true", [
-            'X-Requested-With' => 'XMLHttpRequest', // ← AJAXを明示
+            'X-Requested-With' => 'XMLHttpRequest', 
         ]);
 
-        // Assert
+        
         $response->assertStatus(200);
 
         $this->assertDatabaseHas('likes', [

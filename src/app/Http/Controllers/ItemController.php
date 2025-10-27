@@ -20,12 +20,12 @@ class ItemController extends Controller
 
         if ($tab === 'mylist') {
             $items = $user
-                ? $user->likedItems()->get() // ← ここでユーザーのいいねしたアイテムを取得
+                ? $user->likedItems()->get() 
                 : collect();
         } else {
             $query = Item::query();
 
-            // 🔍 検索ワードが入力されている場合、商品名 or 説明で部分一致検索
+            
             if (!empty($keyword)) {
                 $query->where(function ($q) use ($keyword) {
                     $q->where('name', 'LIKE', "%{$keyword}%")
@@ -33,7 +33,7 @@ class ItemController extends Controller
                 });
         }
 
-        // 最新順で取得
+        
         $items = $query->latest()->get();
     }
 
@@ -53,15 +53,15 @@ public function show($id, Request $request)
 
         $user = auth()->user();
 
-        // すでにいいねしているか確認
+        
         $existingLike = $item->likes()->where('user_id', $user->id)->first();
 
         if ($existingLike) {
-            // いいね解除
+            
             $existingLike->delete();
             $liked = false;
         } else {
-            // 新規いいね
+            
             Like::create([
                 'user_id' => $user->id,
                 'item_id' => $item->id,
@@ -69,7 +69,7 @@ public function show($id, Request $request)
             $liked = true;
         }
 
-        // 最新のいいね数を返す
+        
         $item->load('likes');
         return response()->json([
             'likes_count' => $item->likes->count(),
@@ -77,7 +77,7 @@ public function show($id, Request $request)
         ]);
     }
 
-    // 通常のページ表示
+    
     return view('items.show', compact('item'));
 }
 
@@ -95,25 +95,25 @@ public function show($id, Request $request)
             $imgPath = $request->file('image')->store('items', 'public');
         }
 
-        // 2. condition文字列をIDに変換
+        
         $condition = Condition::where('condition', $request->condition)->first();
         
         if (!$condition) {
             return back()->withErrors(['condition' => '選択された商品の状態は無効です']);
         }
 
-        // 3. itemsテーブルに保存
+        
         $item = Item::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'condition_id' => $condition->id, // IDをそのまま
+            'condition_id' => $condition->id, 
             'brand' => $request->brand ?? null,
             'user_id' => auth()->id(),
             'img_path' => $imgPath,
         ]);
 
-        // 4. カテゴリを中間テーブルに保存
+       
         $item->categories()->sync($request->category_id);
 
         return redirect()->route('items.index', $item->id)

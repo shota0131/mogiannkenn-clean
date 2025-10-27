@@ -17,7 +17,7 @@ class Profile extends Model
         'building',
     ];
 
-    // Userとのリレーション
+    
     public function user()
     {
         return $this->belongsTo(User::class);

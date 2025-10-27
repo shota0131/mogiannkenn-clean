@@ -108,13 +108,13 @@ class ItemSeeder extends Seeder
         foreach ($items as $item) {
 
             $randomUser = $users->random();
-            // 外部URLから画像を取得
+            
             $imageContents = file_get_contents($item['img_path']);
             
-            // 保存先のファイル名を作成
+            
             $filename = 'items/' . Str::uuid() . '.jpg';
             
-            // storage/app/public/items に保存
+            
             Storage::disk('public')->put($filename, $imageContents);
 
             $itemId = DB::table('items')->insertGetId([
@@ -129,10 +129,10 @@ class ItemSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
         
-            // ランダムなカテゴリーを取得
+            
             $category = Category::inRandomOrder()->first();
         
-            // 中間テーブルに保存
+            
             DB::table('category_items')->insert([
                 'item_id' => $itemId,
                 'category_id' => $category->id,

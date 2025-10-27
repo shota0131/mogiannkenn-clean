@@ -17,7 +17,7 @@ class PurchaseController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
 
-        // ここでユーザーのプロフィール情報が存在するか確認
+        
         if (!$user->profile || !$user->profile->postcode || !$user->profile->address) {
             return redirect()->route('profile.edit')
                 ->with('error', '購入前にプロフィール（住所）を設定してください。');
@@ -30,14 +30,14 @@ public function store(PurchaseRequest $request, $item_id)
 {
     $item = Item::findOrFail($item_id);
 
-    // Stripe 決済上限チェック
+    
     if ($item->price > 300000) {
         return back()->withErrors(['error' => 'Stripe決済は30万円以下の商品のみ対応しています。']);
     }
 
     
     if ($request->has('success')) {
-        // すでに購入済みでないか確認
+       
         $alreadySold = DB::table('sold_items')->where('item_id', $item->id)->exists();
 
         if (!$alreadySold) {
@@ -55,12 +55,12 @@ public function store(PurchaseRequest $request, $item_id)
         return redirect()->route('items.index')->with('success', '購入が完了しました！');
     }
 
-    // Stripe キャンセル処理
+    
     if ($request->has('cancel')) {
         return redirect()->route('items.index')->withErrors(['error' => '購入がキャンセルされました。']);
     }
 
-    // Stripe Checkout 開始処理
+    
     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
     $session = \Stripe\Checkout\Session::create([
@@ -87,7 +87,7 @@ public function success(Request $request, $item_id)
 {
     $item = Item::findOrFail($item_id);
 
-    // すでに売却済みでないか確認
+    
     $alreadySold = DB::table('sold_items')->where('item_id', $item->id)->exists();
 
     if (!$alreadySold) {

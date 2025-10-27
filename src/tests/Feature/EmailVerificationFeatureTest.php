@@ -20,7 +20,7 @@ class EmailVerificationFeatureTest extends TestCase
     {
         Notification::fake();
 
-        // 会員登録を実行
+        
         $response = $this->post('/register', [
             'name' => 'テストユーザー',
             'email' => 'test@example.com',
@@ -28,13 +28,13 @@ class EmailVerificationFeatureTest extends TestCase
             'password_confirmation' => 'password123',
         ]);
 
-        // 登録完了後は認証メール送信ページへ遷移
+        
         $response->assertRedirect(route('verification.notice'));
 
         $user = User::where('email', 'test@example.com')->first();
         $this->assertNotNull($user);
 
-        // 認証メールが送信されていることを確認
+        
         Notification::assertSentTo($user, VerifyEmail::class);
     }
 
@@ -47,13 +47,13 @@ class EmailVerificationFeatureTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('verification.notice'));
 
-        // ページが表示されること
+        
         $response->assertStatus(200);
 
-        // 「認証はこちらから」ボタンが存在すること
+        
         $response->assertSee('認証はこちらから');
 
-        // ボタンのリンク先が Gmail に設定されていること（UI的仕様）
+        
         $response->assertSee('https://mail.google.com/');
     }
 
@@ -66,20 +66,20 @@ class EmailVerificationFeatureTest extends TestCase
             'email_verified_at' => null,
         ]);
 
-        // 有効な署名付きURLを生成
+        
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(60),
             ['id' => $user->id, 'hash' => sha1($user->email)]
         );
 
-        // 認証リンクにアクセス
+        
         $response = $this->actingAs($user)->get($verificationUrl);
 
-        // プロフィール編集画面へリダイレクトされること
+        
         $response->assertRedirect(route('profile.edit'));
 
-        // メールが認証済みになっていること
+        
         $this->assertNotNull($user->fresh()->email_verified_at);
     }
 }

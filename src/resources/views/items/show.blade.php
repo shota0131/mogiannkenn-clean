@@ -42,10 +42,10 @@ document.getElementById('favorite-button').addEventListener('click', function() 
     })
     .then(data => {
         if (!data) return;
-        // カウント更新
+        
         document.getElementById('favorite-count').textContent = data.likes_count;
 
-        // ★の色を切り替え
+        
         const btn = document.getElementById('favorite-button');
         btn.dataset.liked = data.liked ? 'true' : 'false';
         btn.style.color = data.liked ? 'gold' : 'black';

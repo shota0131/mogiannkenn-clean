@@ -17,13 +17,13 @@ class SoldItem extends Model
         'sending_building',
     ];
 
-    // 商品情報
+    
     public function item()
     {
         return $this->belongsTo(Item::class);
     }
 
-    // 購入者情報
+    
     public function user()
     {
         return $this->belongsTo(User::class);

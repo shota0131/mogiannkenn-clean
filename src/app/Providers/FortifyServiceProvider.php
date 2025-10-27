@@ -29,7 +29,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // ログイン時の認証処理
+        
         Fortify::authenticateUsing(function ($request) {
             $user = User::where('email', $request->email)->first();
 
@@ -38,10 +38,10 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
-        // ログイン画面
+        
         Fortify::loginView(fn () => view('auth.login'));
 
-        // 新規登録画面
+        
         Fortify::registerView(fn () => view('auth.register'));
     }
 }

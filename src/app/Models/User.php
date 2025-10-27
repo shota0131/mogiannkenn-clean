@@ -62,10 +62,10 @@ public function purchasedItems()
     return $this->hasManyThrough(
         Item::class,
         SoldItem::class,
-        'user_id',    // SoldItem の user_id
-        'id',         // Item の id
-        'id',         // User の id
-        'item_id'     // SoldItem の item_id
+        'user_id',    
+        'id',         
+        'id',         
+        'item_id'     
     );
 }
     public function profile()
